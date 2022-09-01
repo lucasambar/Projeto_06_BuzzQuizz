@@ -1,9 +1,9 @@
-/*
+
 // Gustavo
 function pegarperguntasdeumquiz(){
     const promessa = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/ID_DO_QUIZZ");
     promessa.then(exibirperguntasdeumquiz);
-    /*Fazer catch*
+    /*Fazer catch*/
     promessa.catch();
 }
 
@@ -52,7 +52,6 @@ function respostasaleatorias(pergunta){
     return pergunta;
 }
 // Gustavo
-*/
 
 // Duda // 
 
@@ -79,16 +78,16 @@ function renderizarQuizzes(response){
     
     for ( let i= 0; i < quizzes.length; i++){
          html += `
-        <li class="quizz" quizz-id=${quizzes[i].id}>
-            <figure class="image-quizz">
-                <img src=${quizzes[i].image} />
-                <figcaption>
-                    <h3 class="title">
-                        ${quizzes[i].title}
-                    </h3>
-                </figcaption>
-            </figure>
-        </li>
+            <li class="quizz" quizz-id=${quizzes[i].id}>
+                <figure class="image-quizz">
+                    <img src=${quizzes[i].image} />
+                    <figcaption>
+                        <h3 class="title">
+                            ${quizzes[i].title}
+                        </h3>
+                    </figcaption>
+                </figure>
+            </li>
         `
     }
     ul.innerHTML = html;
