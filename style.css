@@ -194,13 +194,14 @@ button{
   display: flex;
   flex-direction: column;
   gap: 27px;
+  align-items: center;
   
 }
 
 .perguntadoquiz{
   background-color: white;
   width: 92%;
-  padding:4%;
+  padding: 4%;
 }
 
 .titulodapergunta{
