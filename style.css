@@ -157,14 +157,14 @@ button{
 
 .bannerdoquiz{
   width: 100%;
-  height: 181px;
   position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url("imagem.svg");
+  height: 142px;
 }
 
 .bannerdoquiz img{
   width: 100%;
   /* arrumar altura em breve */
-  height: 100%;
 }
 
 .bannerdoquiz figcaption{
