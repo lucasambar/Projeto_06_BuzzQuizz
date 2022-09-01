@@ -7,38 +7,31 @@
     <title>BuzzQuizz</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="imagem.svg" />
   </head>
   <body>
     <!--Duda-->
-    <div class="hidden">
         <header class="app-header">
         <h1>BuzzQuizz</h1>
         </header>
         <main class="content">
-        <h2 class="title-content">Todos os Quizzes</h2>
-        <ul class="quizzes-cards">
-            <li class="quizz">
-            <figure class="image-quizz">
-                <img src="imagem.svg" />
-                <figcaption>
-                <h3 class="title">
-                    Acerte os personagens corretos dos Simpsons e prove seu amor!
-                </h3>
-                </figcaption>
-            </figure>
-            </li>
-        </ul>
+            <div class="criar-quizz">
+                <p class="title-criarquiz">Voce ainda não criou nenhum quiz ainda :(</p>
+                <button class="botão-criarquiz"><p>Criar Quizz</p></button>
+            </div>
+            <div class="all-cards">
+                <h2 class="title-content">Todos os Quizzes</h2>
+                <ul class="quizzes-cards"></ul>
+            </div>     
         </main>
     </div>
     <!--Duda-->
 
     <!-- Lucas - pag 03 -->
-    <div class = "hidden pag03">
+    <div class="hidden">
         <header class="cabeçalho3">
             <img src="./img/Group 1.png">
         </header>
-        <h2>Comece pelo começo</h2>
+        <h2 class="tituo-cabeçalho3">Comece pelo começo</h2>
         <main class="formulario">
             <input placeholder="Título do seu quizz" class="titulo" required>
             <input placeholder="URL da imagem do seu quizz" class="capa" type="url" required>
@@ -73,8 +66,8 @@
                 <h4>Pergunta 2</h4>
                 <img src="./img/Vector.png">
             </footer>
-            <button>Prosseguir pra criar níveis</button>
         </div>
+        <button>Prosseguir pra criar níveis</button>
     </div>
         <!-- pag 3.3 -->
     <div class="pag03-3">
@@ -96,6 +89,7 @@
         <button>Finalizar quizz</button>
     </div> 
     <!-- fim pag. 03 (Lucas) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
