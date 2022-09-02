@@ -49,26 +49,29 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 400;
+  text-align:center;
+  margin-bottom: 20px;
 
 }
 
 .content .criar-quiz .title-criarquiz .botão-criarquiz button {
-  flex-direction: column; 
   box-sizing: border-box;
   background: #FAFAFA;
   border: 1px dashed #EC362D;
   outline: none;
   border-radius: 50px;
-}
+  width: 151px;
+  justify-content:center;
+  color: #EC362D;
+  font-size: 21px;
+  font-family: 'Roboto', sans-serif;
+  padding:
 
-.content .criar-quiz .title-criarquiz .botão-criarquiz button{
+  }
+
+.content .criar-quiz .title-criarquiz .botão-criarquiz{
   display: flex;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 21px;
-  line-height: 25px;
 }
 
 
