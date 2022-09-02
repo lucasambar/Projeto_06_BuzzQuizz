@@ -134,7 +134,13 @@ body{
   justify-content: center;
   align-items: center;
 }
-.pag03 h2{ 
+.pag03-1{
+  height: 100%;
+  width: 100%;
+  padding-bottom: 20px;
+  background: #E5E5E5;
+}
+.pag03-1 h2{ 
   font-family: Roboto;
   font-size: 23px;
   font-weight: 700;
@@ -149,7 +155,7 @@ body{
   margin: auto;
   margin-top: 69px;
 }
-.formulario{
+.pag03-1 .formulario{
   height: 256px;
   width: 600px;
   background-color: #FFFFFF;
@@ -166,7 +172,7 @@ body{
   margin: auto;
   margin-top: 30px;
 }
-.pag03 input{
+.pag03-1 input{
   height: 46px;
   width: 564px;
   border-radius: 5px;
@@ -180,7 +186,7 @@ body{
   letter-spacing: 0em;
   text-align: left;
 }
-.pag03 input::placeholder{
+.pag03-1 input::placeholder{
   font-family: Roboto;
   font-size: 19px;
   font-style: italic;
@@ -190,7 +196,7 @@ body{
   text-align: left;
   color: #BABABA;
 }
-.pag03 button{
+.pag03-1 .button{
   height: 54px;
   width: 370px;
   border-radius: 15px;
@@ -210,7 +216,13 @@ body{
   margin-top: 84px;
 }
 
-.pergunta div{
+.pag03-2{
+  height: 100%;
+  width: 100%;
+  padding-bottom: 20px;
+  background: #E5E5E5;
+}
+.pag03-2 .pergunta div{
   height: 74px;
   width: 601px;
   left: 426px;
@@ -222,7 +234,7 @@ body{
   align-items: center;
   justify-content: space-between;
 }
-.pergunta section{
+.pag03-2 .pergunta section{
   height: 825px;
   width: 600px;
   border-radius: 5px;
@@ -236,7 +248,7 @@ body{
   margin-top: 40px;
 }
 
-.pergunta h5 {
+.pag03-2 .pergunta h5 {
   font-family: Roboto;
   font-size: 20px;
   font-weight: 700;
@@ -249,11 +261,11 @@ body{
   margin-top: 29px;
   margin-left: 15px;
 }
-.pergunta input {
+.pag03-2 .pergunta input {
   margin-top: 16px;
   margin-left: 15px;
 }
-footer{
+.pag03-2 footer{
   height: 74px;
   width: 601px;
   border-radius: 5px;
@@ -264,7 +276,7 @@ footer{
   justify-content: space-between;
   align-items: center;
 }
-footer h4{
+.pag03-2 footer h4{
   font-family: Roboto;
   font-size: 20px;
   font-weight: 700;
@@ -377,7 +389,7 @@ footer h4{
   
   display: block;
 }
-.pag03-3 button{
+.pag03-3 .button{
   height: 54px;
   width: 370px;
   border-radius: 15px;
@@ -392,7 +404,9 @@ footer h4{
   text-align: center;
   color: #FFF5F4;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
   margin-top: 84px;
 }

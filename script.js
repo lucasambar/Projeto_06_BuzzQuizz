@@ -169,3 +169,35 @@ function renderizarQuizzes(response){
     }
     ul.innerHTML = html;
 }
+
+//Lucas
+let titulo,capa
+function passaPag1 () {
+    console.log("funciona")
+    let pag31 = document.querySelector(".pag03-1")
+    titulo = pag31.querySelector(".titulo").value;
+    if (titulo.length < 20 || titulo.length > 65) {
+        alert("O título deve ter mais 20 e menos que 65 caractéres para ser válido!");
+        return
+    }
+    capa = pag31.querySelector(".capa").value
+    let pattern = /^https:\/\//i;
+    if (!pattern.test(capa)) {
+        alert("Confira se o que foi inserido é realmente um URL!");
+        return
+    }
+    let numPerguntas = Number(pag31.querySelector(".numPerguntas").value);
+    if ((numPerguntas < 3)) {
+        alert("Digite como número a quantidade de questões e verifique se é maior que 3.");
+        return
+    }
+    let numNiveis = Number(pag31.querySelector(".numNiveis").value);
+    if (numNiveis < 2) {
+        alert("Digite como número a quantidade de níveis e verifique se ele é maior que 2");
+        return
+    }
+
+    pag31.classList.add("hidden")
+    let pag32 = document.querySelector(".pag03-2")
+    pag32.classList.remove("hidden")
+}
