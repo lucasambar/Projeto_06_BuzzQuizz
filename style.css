@@ -25,12 +25,35 @@ body{
   font-size: 37px;
   margin-left: 5px;
   font-weight: 700;
-  position: fixed;
+ 
 }
 .content{
   padding:0px 18px 0px 18px;
-  
 }
+
+.content .criar-quiz{
+  background-color: red;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content:center;
+  padding: 8px 48px 67px 48px;
+  margin-bottom: 14px;
+  border-radius: 5px;
+}
+
+.content .criar-quiz .title-criarquiz  {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+
+
+}
+
+
+
 .content .title-content {
   font-size: 20px;
   font-weight: 700;
