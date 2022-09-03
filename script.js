@@ -186,18 +186,53 @@ function passaPag1 () {
         alert("Confira se o que foi inserido é realmente um URL!");
         return
     }
-    let numPerguntas = Number(pag31.querySelector(".numPerguntas").value);
-    if ((numPerguntas < 3)) {
+    let numPerguntas = pag31.querySelector(".numPerguntas").value;
+    if (isNaN(numPerguntas) || Number(numPerguntas) < 3) {
         alert("Digite como número a quantidade de questões e verifique se é maior que 3.");
         return
     }
     let numNiveis = Number(pag31.querySelector(".numNiveis").value);
-    if (numNiveis < 2) {
+    if (isNaN(numNiveis) || numNiveis < 2) {
         alert("Digite como número a quantidade de níveis e verifique se ele é maior que 2");
         return
     }
 
-    pag31.classList.add("hidden")
-    let pag32 = document.querySelector(".pag03-2")
-    pag32.classList.remove("hidden")
+    Number(numPerguntas)
+    Number(numNiveis)
+
+    let perguntas = document.querySelector(".pergunta")
+    perguntas.innerHTML = ``
+    for (let i = 1; i <= numPerguntas; i++) {
+        perguntas.innerHTML += `
+        <section class="pergunta${i}">
+        <h5>Pergunta ${i}</h5>
+            <input placeholder="Texto da pergunta" required>
+            <input placeholder="Cor de fundo da pergunta" type="url" required>
+            <h5>Resposta correta</h5>
+            <input placeholder="Resposta correta" required>
+            <input placeholder="URL da imagem" required>
+            <h5>Respostas incorretas</h5>
+            <input placeholder="Resposta incorreta 1" required>
+            <input placeholder="URL da imagem 1" required>
+            <input placeholder="Resposta incorreta 2" required>
+            <input placeholder="URL da imagem 2" required>
+            <input placeholder="Resposta incorreta 3" required>
+            <input placeholder="URL da imagem 3" required>
+        </section>
+        `
+    }
+
+    let niveis = document.querySelector(".niveis");
+    niveis.innerHTML = ``;
+    for (let i = 1; i <= numNiveis; i++) {
+        niveis.innerHTML += `
+    <section class="nivel${i}">
+        <h5>Nível ${i}</h5>
+        <input placeholder="Título do nível" required>
+        <input placeholder="% de acerto mínima" required>
+        <input placeholder="URL da imagem do nível" required>
+        <input placeholder="Descrição do nível" required>
+    </section>
+        `
+    }
 }
