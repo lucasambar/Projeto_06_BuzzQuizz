@@ -408,15 +408,14 @@ footer h4{
 
 
 
-
-
-
-/* Gustavo */
-
 /*Gustavo */
-
 .paginadoquiz{
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 69px;
 }
 
 .bannerdoquiz{
@@ -425,7 +424,6 @@ footer h4{
   height: 142px;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(imagem.svg);
 }
 
 .perguntasdoquiz{
@@ -447,7 +445,7 @@ footer h4{
 }
 
 .titulodapergunta, .textodefinalizaçao{
-  background-color: #434CA0;
+  background-color: #EC362D;
   width: 92%;
   height: 89px;
   display: flex;
@@ -541,6 +539,20 @@ font-weight: 400;
 font-size: 18px;
 line-height: 21px;
 color: #818181;
+margin-bottom: 50px;
+}
+
+.level.hidden{
+  display: none;
+}
+
+figcaption .titulobanner{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 22px;
+color: white;
 }
 
 /* Gustavo */

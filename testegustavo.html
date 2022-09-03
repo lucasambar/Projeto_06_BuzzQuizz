@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -14,70 +14,9 @@
     <header class="app-header">
       <h1>BuzzQuizz</h1>
     </header>
-    <div class="paginadoquiz">
-      <figure class="bannerdoquiz">
-        <figcaption>
-          <h3 class="titulobanner">Titulo do Quiz</h3>
-        </figcaption>
-      </figure>
-      <div class="perguntasdoquiz">
-        <div class="perguntadoquiz">
-          <div class="titulodapergunta">Titulo da Pergunta</div>
-          <div class="containerdeopçoes container1">
-            <div class="opçao" onclick="escolhadeopçoesteste(this)">
-              <img src="image 3.png" />
-              <h4>Opçao 1</h4>
-            </div>
-            <div class="opçao" onclick="escolhadeopçoesteste(this)">
-              <img src="image 3.png" />
-              <h4>Opçao 2</h4>
-            </div>
-            <div class="opçao" onclick="escolhadeopçoesteste(this)">
-              <img src="image 3.png" />
-              <h4>Opçao 3</h4>
-            </div>
-            <div class="opçao" onclick="escolhadeopçoesteste(this)">
-              <img src="image 3.png" />
-              <h4>Opçao 4</h4>
-            </div>
-          </div>
-        </div>
-        <div class="perguntadoquiz">
-          <div class="titulodapergunta">Titulo da Pergunta</div>
-          <div class="containerdeopçoes">
-            <div class="opçao">
-              <img src="image 3.png" class="opaco" />
-              <h4>Opçao 1</h4>
-            </div>
-            <div class="opçao opçaocorreta">
-              <img src="image 3.png" />
-              <h4>Opçao 2</h4>
-            </div>
-            <div class="opçao">
-              <img src="image 3.png" class="opaco" />
-              <h4>Opçao 3</h4>
-            </div>
-            <div class="opçao">
-              <img src="image 3.png" class="opaco" />
-              <h4>Opçao 4</h4>
-            </div>
-          </div>
-        </div>
-        <div class="level">
-          <div class="textodefinalizaçao">
-            88% de acerto: Você é praticamente um aluno de Hogwarts!
-          </div>
-          <img class="imagemdefinalizaçao" src="image 10.png" />
-          <div class="conclusaofinalizaçao">
-            Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito
-            de comida e clique no botão abaixo para usar o vira-tempo e
-            reiniciar este teste.
-          </div>
-        </div>
-        <button class="reiniciarquiz">Reiniciar Quiz</button>
-        <a class="voltarparahome">Voltar para Home</a>
-      </div>
+    <div class="paginadoquiz hidden">
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
