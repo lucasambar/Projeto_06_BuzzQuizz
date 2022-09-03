@@ -3,7 +3,7 @@
 let counterdeacertos = 0;
 
 function pegarperguntasdeumquiz(){
-    const promessa = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/ID_DO_QUIZZ");
+    const promessa = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1");
     promessa.then(exibirperguntasdeumquiz);
     /*Fazer catch*/
     promessa.catch();
@@ -13,11 +13,11 @@ function exibirperguntasdeumquiz(r){
     const quiz = r.data;
     const paginadoquiz = document.querySelector('.paginadoquiz');
     paginadoquiz.classList.remove("hidden");
-    paginadoquiz.innerHTML = `<figure class="bannerdoquiz" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url("${quiz.image}");">
+    paginadoquiz.innerHTML = `<figure class="bannerdoquiz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${quiz.image});background-repeat: no-repeat;background-size: cover">
     <figcaption>
         <h3 class="titulobanner">${quiz.title}</h3>
     </figcaption>
-</figure>
+</figure><div class="perguntasdoquiz">
     `;
     let perguntas = quiz.questions;
     perguntas.sort(comparador);
@@ -26,7 +26,7 @@ function exibirperguntasdeumquiz(r){
     let perguntaslen = perguntas.length;
     for(let j = 0; j < perguntas.length; j++){
         perguntasinnerhtml += `<div class="perguntadoquiz">
-                                   <div class="titulodapergunta" style="background-color:${perguntas[j].color};>
+                                   <div class="titulodapergunta" style="background-color:${perguntas[j].color};">
                                         ${perguntas[j].title}
                                    </div>
                                    <div class="containerdeopçoes container${j}">`;
@@ -44,7 +44,7 @@ function exibirperguntasdeumquiz(r){
     }
     // loop aqui
     for(let a = 0; a < quiz.levels.length;a++){
-        perguntasinnerhtml += `<div class="level ${"level" + a} hidden data-minvalue="${quiz.levels[a].minValue}">
+        perguntasinnerhtml += `<div class="level ${"level" + a} hidden" data-minvalue="${quiz.levels[a].minValue}">
     <div class="textodefinalizaçao">
         ${quiz.levels[a].title}
     </div>
@@ -55,9 +55,10 @@ function exibirperguntasdeumquiz(r){
 </div>
     `;
     };
-    perguntasinnerhtml += `<button class="reiniciarquiz hidden" onclick="reiniciarquiz()">Reiniciar Quiz</button>
-    <a class="voltarparahome hidden" onclick="voltarparahome(this)">Voltar para Home</a>
+    perguntasinnerhtml += `<button class="reiniciarquiz" onclick="reiniciarquiz()">Reiniciar Quiz</button>
+    <a class="voltarparahome" onclick="voltarparahome(this)">Voltar para Home</a></div>
     `;
+    paginadoquiz.innerHTML += perguntasinnerhtml;
 }
 
 function comparador() { 
@@ -70,12 +71,15 @@ function respostasaleatorias(pergunta){
 }
 
 function escolhadeopçoes(t, numerodocontainer, length){
-   let selecionado = document.querySelector('.opçaoescolhida');
+    //consertado
+   let selecionado = document.querySelector('.opçaoescolhida' + '.escolhida' + numerodocontainer);
    let container = document.querySelector('.container' + numerodocontainer);
+   let l = length;
    if(selecionado != null){}
    else{
     selecionado = t;
     selecionado.classList.add("opçaoescolhida");
+    selecionado.classList.add("escolhida" + numerodocontainer)
     let container2 = Array.from(container.children).map((elemento) => {elemento.classList.add("opaco");return elemento;});
     selecionado.classList.remove("opaco");
     if(selecionado.dataset.true === "true"){
@@ -85,27 +89,26 @@ function escolhadeopçoes(t, numerodocontainer, length){
     else{
         selecionado.classList.add("opçaoerrada");
     };
-    const timeout = setTimeout(scrollarparaaproxima, 2000, numerodocontainer);
+    const timeout = setTimeout(scrollarparaaproxima, 2000, numerodocontainer, l);
    };
 
-   function scrollarparaaproxima(numerodocontainer){
+   function scrollarparaaproxima(numerodocontainer, length){
     let proxima = document.querySelector('.container' + (numerodocontainer + 1));
     let resultado = parseInt(counterdeacertos / length * 100);
-    if(proxima != null){
+    let selecionadas = document.querySelectorAll('.opçaoescolhida');
+    if(proxima != null && (selecionadas.length < length)){
         proxima.scrollIntoView();
     }
-    else{
+    else if(selecionadas.length === length){
         let definirproxima = document.querySelectorAll('.level');
         for(const i of definirproxima){
             if(resultado >= i.dataset.minvalue){
-                /* funciona porque estao em ordem crescente */
                 proxima = i;
             }
         }
         proxima.classList.remove("hidden");
         proxima.scrollIntoView();
-        proxima.firstChild.textContent = `${resultado}% de acerto: ` + proxima.firstChild.textContent;
-        /*aqui vem o calculo provavelmente, e precisa selecionar o level corretos*/
+        proxima.firstElementChild.textContent = `${resultado}% de acerto: ` + proxima.firstElementChild.textContent;
         counterdeacertos = 0;
     }
    }
@@ -115,7 +118,7 @@ function reiniciarquiz(){
     let paginadoquiz = document.querySelector('.paginadoquiz');
     paginadoquiz.innerHTML = "";
     paginadoquiz.classList.add("hidden");
-    const header = document.querySelector(".header");
+    const header = document.querySelector("header");
     header.scrollIntoView();
     pegarperguntasdeumquiz();
 }
@@ -124,11 +127,14 @@ function voltarparahome(){
     let paginadoquiz = document.querySelector('.paginadoquiz');
     paginadoquiz.innerHTML = "";
     paginadoquiz.classList.add("hidden");
-    const header = document.querySelector(".header");
+    const header = document.querySelector("header");
     header.scrollIntoView();
 
 }
+
+
 // Gustavo
+
 
 // Duda // 
 

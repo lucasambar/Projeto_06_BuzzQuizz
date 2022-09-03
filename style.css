@@ -49,26 +49,27 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 400;
+  text-align:center;
+  margin-bottom: 20px;
 
 }
 
 .content .criar-quiz .title-criarquiz .botão-criarquiz button {
-  flex-direction: column; 
   box-sizing: border-box;
   background: #FAFAFA;
   border: 1px dashed #EC362D;
   outline: none;
   border-radius: 50px;
-}
+  width: 151px;
+  justify-content:center;
+  color: #EC362D;
+  font-size: 21px;
+  font-family: 'Roboto', sans-serif;
+  }
 
-.content .criar-quiz .title-criarquiz .botão-criarquiz button{
+.content .criar-quiz .title-criarquiz .botão-criarquiz{
   display: flex;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 21px;
-  line-height: 25px;
 }
 
 
@@ -439,15 +440,14 @@ body{
 
 
 
-
-
-
-/* Gustavo */
-
 /*Gustavo */
-
 .paginadoquiz{
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 69px;
 }
 
 .bannerdoquiz{
@@ -456,7 +456,6 @@ body{
   height: 142px;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(imagem.svg);
 }
 
 .perguntasdoquiz{
@@ -478,7 +477,7 @@ body{
 }
 
 .titulodapergunta, .textodefinalizaçao{
-  background-color: #434CA0;
+  background-color: #EC362D;
   width: 92%;
   height: 89px;
   display: flex;
@@ -572,6 +571,20 @@ font-weight: 400;
 font-size: 18px;
 line-height: 21px;
 color: #818181;
+margin-bottom: 50px;
+}
+
+.level.hidden{
+  display: none;
+}
+
+figcaption .titulobanner{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 22px;
+color: white;
 }
 
 /* Gustavo */
