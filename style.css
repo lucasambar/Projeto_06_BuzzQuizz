@@ -48,9 +48,10 @@ body{
 .content .criar-quiz .title-criarquiz p {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
-  font-weight: 400;
+  font-weight:bold;
   text-align:center;
   margin-bottom: 20px;
+  color: #B9B9B9;
 
 }
 
@@ -73,10 +74,12 @@ body{
 }
 
 
-.content .title-content {
+.all-cards .title-content {
   font-size: 20px;
-  font-weight: 700;
   justify-content: center;
+  font-weight: bold;
+  margin-bottom: 14px;
+
 }
 
 
