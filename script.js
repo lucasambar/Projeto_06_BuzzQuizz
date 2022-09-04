@@ -177,9 +177,9 @@ function renderizarQuizzes(response){
 }
 
 //Lucas
-let titulo,capa
+let titulo,capa,numPerguntas,numNiveis
+
 function passaPag1 () {
-    console.log("funciona")
     let pag31 = document.querySelector(".pag03-1")
     titulo = pag31.querySelector(".titulo").value;
     if (titulo.length < 20 || titulo.length > 65) {
@@ -192,12 +192,12 @@ function passaPag1 () {
         alert("Confira se o que foi inserido é realmente um URL!");
         return
     }
-    let numPerguntas = pag31.querySelector(".numPerguntas").value;
+    numPerguntas = pag31.querySelector(".numPerguntas").value;
     if (isNaN(numPerguntas) || Number(numPerguntas) < 3) {
         alert("Digite como número a quantidade de questões e verifique se é maior que 3.");
         return
     }
-    let numNiveis = Number(pag31.querySelector(".numNiveis").value);
+    numNiveis = Number(pag31.querySelector(".numNiveis").value);
     if (isNaN(numNiveis) || numNiveis < 2) {
         alert("Digite como número a quantidade de níveis e verifique se ele é maior que 2");
         return
@@ -220,10 +220,10 @@ function passaPag1 () {
             <h5>Respostas incorretas</h5>
             <input placeholder="Resposta incorreta 1" required>
             <input placeholder="URL da imagem 1" required>
-            <input placeholder="Resposta incorreta 2" required>
-            <input placeholder="URL da imagem 2" required>
-            <input placeholder="Resposta incorreta 3" required>
-            <input placeholder="URL da imagem 3" required>
+            <input placeholder="Resposta incorreta 2" >
+            <input placeholder="URL da imagem 2" >
+            <input placeholder="Resposta incorreta 3" >
+            <input placeholder="URL da imagem 3" >
         </section>
         `
     }
@@ -241,4 +241,60 @@ function passaPag1 () {
     </section>
         `
     }
+
+    pag31.classList.add("hidden")
+    let pag32 = document.querySelector(".pag03-2")
+    pag32.classList.remove("hidden")
+    
 }
+
+function passaPag2 () {
+    let pag32 = document.querySelector(".pag03-2");
+    let arr = pag32.querySelectorAll("input").value;
+    console.log(arr)
+    for(let i = 0; i<arr.length; i+10) { //testa tamanho do titulo
+        if (arr[1].lenght < 20) {
+            alert("A pergunta deve ter mais que 20 caractéres!")
+            return
+        }
+    }
+
+    for (let i = 1; i<arr.length; i+10) { //testa se é hexadecimal
+        let pattern = /^#[0-9A-F]{6}$/i
+        if (!pattern.test(arr[i])) {
+            alert("Verifique a cor informada está em formato hexadecimal (começar em '#', seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F)")
+            return
+        }
+    }
+
+    for (let i = 2; i<arr.length; i+10) { //testa se o campo de respota correta e incorreta está preenchido
+        if (arr[i] === "" || arr[i+1] === "" || arr[i+2] === "" || arr[i+3] === "") {
+            alert("Os campos de respostas corretas devem ser preenchidos.")
+        }
+    }
+
+    for (let i = 3; i< arr.length; i+10) { //testa se imagem está em URL
+        let pattern = /^https:\/\//i
+        if (!pattern.test(arr[i]) || !pattern.test(arr[i+2])) {
+            alert("As imagens devem estar em formato URL")
+        }
+    }
+
+    //cria listas objeto com as infos de cada pergunta
+    let perguntas = []
+    for (let i = 1; i<numPerguntas; i++) {
+        if (i===1) {
+            perguntas.push({i: arr.slice(0,11)})
+        }
+        else {
+            perguntas.push({i: arr.slice(10*(i-1)+1,10*i+1)})
+        }
+    } 
+
+    console.log(perguntas)
+
+    pag32.classList.add("hidden")
+    let pag33 = document.querySelector("pag03-3")
+    pag33.classList.remove("hidden")
+}
+
