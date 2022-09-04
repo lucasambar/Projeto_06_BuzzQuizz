@@ -10,12 +10,12 @@
   </head>
   <body>
     <!--Duda-->
-    <div class="page-01 hidden">
+    <div class="page-01">
         <header class="app-header">
             <h1>BuzzQuizz</h1>
         </header>
         <main class="content">
-            <div class="criar-quiz">
+            <div class="criar-quiz hidden">
                 <div class="title-criarquiz">
                     <p>Você ainda não criou nenhum <br> quizz ainda :(</p>
                     <div class="botão-criarquiz">
@@ -24,15 +24,15 @@
                 </div>
             </div>
             <div class="seuquiz">
-            <h2 class="title-seuquiz">Seus Quizzes</h2>
-                <ion-icon onclick= "" name="add-circle"></ion-icon>
-                <ul>
-                    <li class="quizzesadd"></li>
-                </ul>
+                <div class="topbar-seuquiz">
+                    <h2 class="title-seuquiz">Seus Quizzes</h2>
+                    <ion-icon class="ionicons" onclick= "" name="add-circle"></ion-icon>
+                </div>
+                <ul class="quizzes-cards-seuquiz"></ul>
             </div>      
             <div class="all-cards">
-            <h2 class="title-content">Todos os Quizzes</h2>
-            <ul class="quizzes-cards"></ul> 
+                <h2 class="title-content">Todos os Quizzes</h2>
+                <ul class="quizzes-cards"></ul>
             </div>    
         </main>
     </main>
@@ -79,8 +79,8 @@
         <div class ="button" onclick="passaPag2()">Prosseguir pra criar níveis </div>
     </div>
         <!-- pag 3.3 -->
-    <div class="pag03-3">
-        <header class="app-header">
+    <div class="pag03-3 hidden">
+        <header class="app-header hidden">
             <h1>BuzzQuizz</h1>
         </header>
         <h2>Agora, decida os níveis</h2>
