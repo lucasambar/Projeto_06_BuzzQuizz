@@ -184,7 +184,7 @@ function renderizarQuizzes(response){
 }
 
 //Lucas
-let titulo,capa,numPerguntas,numNiveis
+let titulo,capa,numPerguntas,numNiveis, perguntas, niveis
 
 function passaPag1 () {
     let pag31 = document.querySelector(".pag03-1")
@@ -280,7 +280,7 @@ function passaPag2 () {
         }
     }
 
-    for (let i = 3; i< arr.length; i+10) { //testa se imagem está em URL
+    for (let i = 3; i<arr.length; i+10) { //testa se imagem está em URL
         let pattern = /^https:\/\//i
         if (!pattern.test(arr[i]) || !pattern.test(arr[i+2])) {
             alert("As imagens devem estar em formato URL")
@@ -288,7 +288,7 @@ function passaPag2 () {
     }
 
     //cria listas objeto com as infos de cada pergunta
-    let perguntas = []
+    perguntas = []
     for (let i = 1; i<numPerguntas; i++) {
         if (i===1) {
             perguntas.push({i: arr.slice(0,11)})
@@ -305,3 +305,56 @@ function passaPag2 () {
     pag33.classList.remove("hidden")
 }
 
+function passaPag3 () {
+    let tituloNivel = document.querySelectorAll(".tituloNivel");
+    tituloNivel.forEach((titulo) => {
+        if (titulo.length < 10) {
+            alert("Os títulos devem ter no mínimo 20 caractéres")
+            return
+        }
+    })
+
+    let porcentagens = document.querySelectorAll(".porcentagem");
+    let contador = 0;
+    porcentagens.forEach((percent) => {
+        percent = Number(percent)
+        if (percent<0 || percent > 100) {
+            alert("Digite o valor em formato percental (0-100)")
+            return
+        }
+        if (percent === 0) {
+            contador = 1;
+        }  
+    })
+    if (contador === 0) {
+        alert("Você deve adcionar um nível referente à 0%")
+        return
+    }
+
+    let imagemNivel = document.querySelectorAll(".imagemNivel");
+    imagemNivel.forEach((img) => {
+        let pattern = /^https:\/\//i;
+        if(!pattern.test(img)) {
+            alert('A imagem deve estar em formato URL.')
+        }
+    })
+
+    let descricaoNivel = document.querySelectorAll(".descriçãoNivel");
+    descricaoNivel.forEach((descricao)=> {
+        if (descricao.length < 30) {
+            alert("As descriçoes dos níveis devem ter ao menos 20 caraactéres")
+        }
+    })
+
+    niveis = [];
+    for (let i = 0; i<numNiveis; i++) {
+        nivel = i+1
+        niveis.push({nivel: [tituloNivel[i],porcentagens[i],imagemNivel[i],descricaoNivel[i]]})
+    }
+
+    salvaQuiz()
+}
+
+function salvaQuiz () {
+    
+}

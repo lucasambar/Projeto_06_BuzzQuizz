@@ -10,7 +10,7 @@
   </head>
   <body>
     <!--Duda-->
-    <div class="page-01">
+    <div class="page-01 hidden">
         <header class="app-header">
         <h1>BuzzQuizz</h1>
         </header>
@@ -86,7 +86,15 @@
             <h1>BuzzQuizz</h1>
         </header>
         <h2>Agora, decida os níveis</h2>
-        <div class="niveis"></div>
+        <div class="niveis">
+            <section class="nivel${i}">
+                <h5>Nível ${i}</h5>
+                <input placeholder="Título do nível" class="tituloNivel" required>
+                <input placeholder="% de acerto mínima" class="pocentagem" required>
+                <input placeholder="URL da imagem do nível" class="imagemNivel" required>
+                <input placeholder="Descrição do nível" class="descriçãoNivel" required>
+            </section>
+        </div>
         <div class ="button" onclick="passaPag1()">Finalizar quizz</div>
     </div> 
     <!-- fim pag. 03 (Lucas) -->
