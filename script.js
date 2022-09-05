@@ -443,5 +443,21 @@ function sucessoQuiz (resposta) {
     pag33.classList.add(".hidden")   
 }
 function retornaMenu () {
-    
+    let pag34 = document.querySelector(".pag03-4") 
+    pag34.classList.add(".hidden")
+
+    let menu = document.querySelector(".page-01")
+    menu.classList.remove(".hidden")
+}
+function acessarQuiz () {
+    const quizzesUsuario = JSON.parse("quizzesUsuario");
+    const lista = JSON.parse(quizzesUsuario);
+
+    let id = lista[lista.lenght-1]
+    pegarperguntasdeumquiz(id)
+    let game = document.querySelector(".game-quizz")
+    game.classList.remove("hidden")
+    let pag34 = document.querySelector(".pag03-4") 
+    pag34.classList.add(".hidden")
+
 }
