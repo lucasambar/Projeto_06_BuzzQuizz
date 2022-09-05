@@ -190,7 +190,7 @@ function renderizarQuizzes(response){
 
 
 //Lucas
-let titulo,capa,numPerguntas,numNiveis, perguntas, niveis
+let titulo,capa,numPerguntas,numNiveis, perguntas, niveis, id
 
 function passaPag1 () {
     let pag31 = document.querySelector(".pag03-1")
@@ -406,4 +406,42 @@ function passaPag3 () {
     }
 
     salvaQuiz()
+}
+function salvaQuiz () {
+    let objeto = {
+    
+            title: titulo,
+            image: capa,
+            questions: listaPerguntas,
+            levels: niveis
+        }
+
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",objeto);
+    promessa.then(sucessoQuiz)
+}
+function sucessoQuiz (resposta) {
+    id = []
+    id.push(resposta.data.id)
+    const idSerializados = JSON.stringify(id);
+    localStorage.setItem("quizzesUsuario", idSerializados);
+
+    let pag34 = document.querySelector(".pag03-4") 
+    let div = pag34.querySelector(".quizzFinal")
+    div.innerHTML += `
+    <figure class="image-quizz">
+        <img src="${capa}" />
+        <figcaption>
+            <h3 class="title">
+                ${titulo}
+            </h3>
+        </figcaption>
+    </figure>
+    `
+    pag34.classList.remove(".hidden")
+
+    let pag33 = document.querySelector(".pag03-3")
+    pag33.classList.add(".hidden")   
+}
+function retornaMenu () {
+    
 }

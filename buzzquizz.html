@@ -40,7 +40,7 @@
     <!--Duda-->
 
     <!-- Lucas - pag 03 -->
-    <div class="pag03-1">
+    <div class="pag03-1 hidden">
         <header class="app-header">
             <h1>BuzzQuizz</h1>
         </header>
@@ -54,7 +54,7 @@
         <div class ="button" onclick="passaPag1()"><p>Prosseguir para criar perguntas</p></div>
     </div>
         <!-- página 3.2 -->
-    <div class ="pag03-2">
+    <div class ="pag03-2 hidden">
         <header class="app-header">
             <h1>BuzzQuizz</h1>
         </header>
@@ -76,10 +76,10 @@
                     <input placeholder="URL da imagem 3" >
                 </section>
         </div>
-        <div class ="button" onclick="passaPag2()">Prosseguir pra criar níveis </div>
+        <div class ="button" onclick="passaPag2()"><p>Prosseguir pra criar níveis</p></div>
     </div>
         <!-- pag 3.3 -->
-    <div class="pag03-3">
+    <div class="pag03-3 hidden">
         <header class="app-header hidden">
             <h1>BuzzQuizz</h1>
         </header>
@@ -93,7 +93,17 @@
                 <input placeholder="Descrição do nível" class="descriçãoNivel" required>
             </section>
         </div>
-        <div class ="button" onclick="passaPag3()">Finalizar quizz</div>
+        <div class ="button" onclick="passaPag3()"><p>Finalizar quizz</p></div>
+    </div> 
+    <div class="pag03-4 hidden">
+        <header class="app-header">
+            <h1>BuzzQuizz</h1>
+        </header>
+        <h2>Seu quizz está pronto!</h2>
+        <div class="quizzFinal" >
+        </div>
+        <div class ="button" onclick="acessaQuizz()"><p>Acessar quizz</p></div>
+        <p class="texto4" onclick="retornaHome()">Voltar para home</p>
     </div> 
     <!-- fim pag. 03 (Lucas) -->
     <!-- Gustavo -->
