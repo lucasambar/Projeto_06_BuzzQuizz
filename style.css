@@ -467,6 +467,7 @@ ion-icon {
   margin: auto;
   margin-top: 84px;
 }
+
 /* Lucas */
 .opaco {
   opacity: 0.3;
@@ -626,3 +627,8 @@ color: white;
 }
 
 /* Gustavo */
+
+/* responsividade */
+@media (max-width: 400px) {
+  .pag03-1 
+}
