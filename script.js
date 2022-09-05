@@ -156,7 +156,13 @@ function voltarparahome(){
 // Gustavo
 
 
-// Duda // 
+// Duda //
+function paginaCriarSeuQuizz() {
+    const page01 = document.querySelector('.page-01');
+    const page0301 = document.querySelector('.pag03-1');
+    page01.classList.add('hidden');
+    page0301.classList.remove('hidden');
+}
 
 // listar todos os quizzes
 const dados= axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
