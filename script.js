@@ -2,6 +2,14 @@
 // Gustavo
 let counterdeacertos = 0;
 let iddoquiz;
+let listaPerguntas = [];
+let quizParaCriar = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: [],
+}
+
 function pegarperguntasdeumquiz(id){
     if(!iddoquiz) {
         iddoquiz = id;
@@ -153,6 +161,7 @@ function voltarparahome(){
 
 // Duda // 
 
+// listar todos os quizzes
 const dados= axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 dados.then(renderizarQuizzes);
 
@@ -178,10 +187,10 @@ function renderizarQuizzes(response){
         `
     }
     ul.innerHTML = html;
-
- //passar para pagina dois
-
 }
+
+// listar seus quizzes
+
 
 //Lucas
 let titulo,capa,numPerguntas,numNiveis, perguntas, niveis
@@ -219,18 +228,18 @@ function passaPag1 () {
         perguntas.innerHTML += `
         <section class="pergunta${i}">
         <h5>Pergunta ${i}</h5>
-            <input placeholder="Texto da pergunta" required>
-            <input placeholder="Cor de fundo da pergunta" type="url" required>
+            <input class="titulo-pergunta q-${i}" placeholder="Texto da pergunta" required>
+            <input class="hexadecimal q-${i}" placeholder="Cor de fundo da pergunta" type="url" required>
             <h5>Resposta correta</h5>
-            <input placeholder="Resposta correta" required>
-            <input placeholder="URL da imagem" required>
+            <input class="resposta correta q-${i}" placeholder="Resposta correta" required>
+            <input class="resposta-url correta q-${i}" placeholder="URL da imagem" required>
             <h5>Respostas incorretas</h5>
-            <input placeholder="Resposta incorreta 1" required>
-            <input placeholder="URL da imagem 1" required>
-            <input placeholder="Resposta incorreta 2" >
-            <input placeholder="URL da imagem 2" >
-            <input placeholder="Resposta incorreta 3" >
-            <input placeholder="URL da imagem 3" >
+            <input class="resposta incorreta q-${i}" placeholder="Resposta incorreta 1" required>
+            <input class="resposta-url incorreta q-${i}" placeholder="URL da imagem 1" required>
+            <input class="resposta incorreta q-${i}" placeholder="Resposta incorreta 2" >
+            <input class="resposta-url incorreta q-${i}" placeholder="URL da imagem 2" >
+            <input class="resposta incorreta q-${i}" placeholder="Resposta incorreta 3" >
+            <input class="resposta-url incorreta q-${i}" placeholder="URL da imagem 3" >
         </section>
         `
     }
@@ -241,10 +250,10 @@ function passaPag1 () {
         niveis.innerHTML += `
     <section class="nivel${i}">
         <h5>Nível ${i}</h5>
-        <input placeholder="Título do nível" required>
-        <input placeholder="% de acerto mínima" required>
-        <input placeholder="URL da imagem do nível" required>
-        <input placeholder="Descrição do nível" required>
+        <input class="tituloNivel" placeholder="Título do nível" required>
+        <input class="porcentagem" placeholder="% de acerto mínima" required>
+        <input class="imagemNivel" placeholder="URL da imagem do nível" required>
+        <input class="descricaoNivel" placeholder="Descrição do nível" required>
     </section>
         `
     }
@@ -257,51 +266,92 @@ function passaPag1 () {
 
 function passaPag2 () {
     let pag32 = document.querySelector(".pag03-2");
-    let arr = pag32.querySelectorAll("input").value;
-    console.log(arr)
-    for(let i = 0; i<arr.length; i+10) { //testa tamanho do titulo
-        if (arr[1].lenght < 20) {
+    const titulosPerguntas = pag32.querySelectorAll(".titulo-pergunta");
+    const hexadecimais = pag32.querySelectorAll(".hexadecimal");
+    const respostasCorretas = pag32.querySelectorAll(".resposta.correta");
+    const respostasIncorretas = pag32.querySelectorAll(".resposta.incorreta");
+    const urlsRespostasIncorretas = pag32.querySelectorAll(".resposta-url.incorreta");
+    const urlsRespostasCorretas = pag32.querySelectorAll(".resposta-url.correta");
+
+    for (let i = 0; i < titulosPerguntas.length; i++) {
+        if (titulosPerguntas[i].value.length < 20) {
             alert("A pergunta deve ter mais que 20 caractéres!")
-            return
+            return;
         }
     }
 
-    for (let i = 1; i<arr.length; i+10) { //testa se é hexadecimal
+    for (let i = 0; i<hexadecimais.length; i++) { //testa se é hexadecimal
         let pattern = /^#[0-9A-F]{6}$/i
-        if (!pattern.test(arr[i])) {
+        if (!pattern.test(hexadecimais[i].value)) {
             alert("Verifique a cor informada está em formato hexadecimal (começar em '#', seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F)")
-            return
+            return;
         }
     }
 
-    for (let i = 2; i<arr.length; i+10) { //testa se o campo de respota correta e incorreta está preenchido
-        if (arr[i] === "" || arr[i+1] === "" || arr[i+2] === "" || arr[i+3] === "") {
+    for (let i = 0; i<respostasCorretas.length; i++) { //testa se o campo de respota correta e incorretas está preenchido
+        if (respostasCorretas[i].value === "" ) {
             alert("Os campos de respostas corretas devem ser preenchidos.")
+            return;
         }
     }
 
-    for (let i = 3; i<arr.length; i+10) { //testa se imagem está em URL
+    for (let i = 0; i<respostasIncorretas.length; i++) { //testa se o campo de respota correta e incorretas está preenchido
+        if (respostasIncorretas[i].value === "" ) {
+            alert("Os campos de respostas incorretas devem ser preenchidos.")
+            return;
+        }
+    }
+
+    for (let i = 0; i<urlsRespostasIncorretas.length; i++) { //testa se imagem está em URL correta
         let pattern = /^https:\/\//i
-        if (!pattern.test(arr[i]) || !pattern.test(arr[i+2])) {
-            alert("As imagens devem estar em formato URL")
+        if (!pattern.test(urlsRespostasIncorretas[i].value)) {
+            alert("As imagens devem estar em formato URL - Respostas Incorretas")
+            return;
         }
     }
 
-    //cria listas objeto com as infos de cada pergunta
-    perguntas = []
-    for (let i = 1; i<numPerguntas; i++) {
-        if (i===1) {
-            perguntas.push({i: arr.slice(0,11)})
+    for (let i = 0; i<urlsRespostasCorretas.length; i++) { //testa se imagem está em URL correta
+        let pattern = /^https:\/\//i
+        if (!pattern.test(urlsRespostasCorretas[i].value)) {
+            alert("As imagens devem estar em formato URL  - Respostas Corretas")
+            return;
         }
-        else {
-            perguntas.push({i: arr.slice(10*(i-1)+1,10*i+1)})
-        }
-    } 
+    }
 
-    console.log(perguntas)
+    // //cria listas objeto com as infos de cada pergunta
+    for (let i = 1; i<=numPerguntas; i++) {
+        const respostasLista = [];
+        const respostaPorQuestao = pag32.querySelectorAll(`.resposta.q-${i}`);
+        const respostaUrlPorQuestao = pag32.querySelectorAll(`.resposta-url.q-${i}`);
+        for (let j = 0; j < respostaPorQuestao.length; j++) {
+            const resposta = {
+                text: '',
+                image: '',
+                isCorrectAnswer: false,
+            }
+
+            if(respostaPorQuestao[j].classList.contains('correta')){
+                resposta.text = respostaPorQuestao[j].value;
+                resposta.image = respostaUrlPorQuestao[j].value;
+                resposta.isCorrectAnswer = true;
+            }else {
+                resposta.text = respostaPorQuestao[j].value;
+                resposta.image = respostaUrlPorQuestao[j].value;
+                resposta.isCorrectAnswer = false;
+            }
+            respostasLista.push(resposta)
+        }
+        const questao = {
+            title: titulosPerguntas[i-1].value,
+            color: hexadecimais[i-1].value,
+            answers: respostasLista,
+        };
+        listaPerguntas.push(questao);
+
+    }
 
     pag32.classList.add("hidden")
-    let pag33 = document.querySelector("pag03-3")
+    const pag33 = document.querySelector(".pag03-3")
     pag33.classList.remove("hidden")
 }
 
@@ -317,7 +367,7 @@ function passaPag3 () {
     let porcentagens = document.querySelectorAll(".porcentagem");
     let contador = 0;
     porcentagens.forEach((percent) => {
-        percent = Number(percent)
+        percent = Number(percent.value)
         if (percent<0 || percent > 100) {
             alert("Digite o valor em formato percental (0-100)")
             return
@@ -334,27 +384,37 @@ function passaPag3 () {
     let imagemNivel = document.querySelectorAll(".imagemNivel");
     imagemNivel.forEach((img) => {
         let pattern = /^https:\/\//i;
-        if(!pattern.test(img)) {
+        if(!pattern.test(img.value)) {
             alert('A imagem deve estar em formato URL.')
         }
     })
 
-    let descricaoNivel = document.querySelectorAll(".descriçãoNivel");
+    let descricaoNivel = document.querySelectorAll(".descricaoNivel");
     descricaoNivel.forEach((descricao)=> {
-        if (descricao.length < 30) {
+        if (descricao.value.length < 30) {
             alert("As descriçoes dos níveis devem ter ao menos 20 caraactéres")
         }
     })
 
     niveis = [];
     for (let i = 0; i<numNiveis; i++) {
-        nivel = i+1
-        niveis.push({nivel: [tituloNivel[i],porcentagens[i],imagemNivel[i],descricaoNivel[i]]})
+        nivel = i+1;
+        const level = {
+            title: tituloNivel[i].value,
+            minValue: porcentagens[i].value,
+            image: imagemNivel[i].value,
+            text: descricaoNivel[i].value,
+        }
+        niveis.push(level)
     }
 
     salvaQuiz()
 }
 
 function salvaQuiz () {
+    quizParaCriar.title = titulo;
+    quizParaCriar.image = capa;
+    quizParaCriar.questions = listaPerguntas;
+    quizParaCriar.levels = niveis;
     
 }
