@@ -24,11 +24,6 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
-function respostasaleatorias(pergunta){
-    pergunta.answers.sort(comparador);
-    return pergunta;
-}
-
 function exibirperguntasdeumquiz(r){
     const quiz = r.data;
     const gamequizzpagina = document.querySelector('.game-quizz');
@@ -36,7 +31,9 @@ function exibirperguntasdeumquiz(r){
     gamequizzpagina.classList.remove("hidden");
     let perguntas = quiz.questions;
     perguntas.sort(comparador);
-    perguntas.map(respostasaleatorias);
+    for(const i of perguntas){
+        i.answers.sort(comparador);
+    }
     let perguntasinnerhtml = "";
     let perguntaslen = perguntas.length;
     paginadoquiz.innerHTML += `

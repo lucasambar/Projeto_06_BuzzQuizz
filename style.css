@@ -633,4 +633,47 @@ line-height: 22px;
 color: white;
 }
 
+@media (min-width: 767px){
+
+  .titulodapergunta, .textodefinalizaçao, .containerdeopçoes{
+    width: 48%;
+  }
+  
+  .bannerdoquiz{
+    height: 227px;
+  }
+
+  figcaption .titulobanner{
+    font-size: 39px;
+  }
+
+  button.reiniciarquiz{
+    width: 20%;
+  }
+
+  .opçao h4{
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .textodefinalizaçao, .titulodapergunta{
+    font-size: 23px;
+  }
+
+  .conclusaofinalizaçao{
+    font-size: 19px;
+  }
+
+  .level{
+    display: flex;
+    gap: 4%;
+    flex-wrap: wrap;
+  }
+
+  .conclusaofinalizaçao, .imagemdefinalizaçao{
+    width: 40%;
+  }
+
+}
+
 /* Gustavo */
