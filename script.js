@@ -407,6 +407,17 @@ function passaPag3 () {
 
     salvaQuiz()
 }
+
+function renderizarSeusQuizzes(resposta) {
+    const page01 = document.querySelector('.page-01');
+    const page0302 = document.querySelector('.pag03-2');
+    const page0303 = document.querySelector('.pag03-3');
+    page01.classList.remove('hidden');
+    page0302.classList.add('hidden');
+    page0303.classList.add('hidden');
+    renderizarQuizzes(resposta);
+}
+
 function salvaQuiz () {
     let objeto = {
     
@@ -444,4 +455,7 @@ function sucessoQuiz (resposta) {
 }
 function retornaMenu () {
     
+    const promesa = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizParaCriar);
+    promesa.then(renderizarSeusQuizzes)
+    promesa.catch((err) => console.err(err))
 }
