@@ -156,7 +156,13 @@ function voltarparahome(){
 // Gustavo
 
 
-// Duda // 
+// Duda //
+function paginaCriarSeuQuizz() {
+    const page01 = document.querySelector('.page-01');
+    const page0301 = document.querySelector('.pag03-1');
+    page01.classList.add('hidden');
+    page0301.classList.remove('hidden');
+}
 
 // listar todos os quizzes
 const dados= axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
@@ -407,6 +413,17 @@ function passaPag3 () {
 
     salvaQuiz()
 }
+
+function renderizarSeusQuizzes(resposta) {
+    const page01 = document.querySelector('.page-01');
+    const page0302 = document.querySelector('.pag03-2');
+    const page0303 = document.querySelector('.pag03-3');
+    page01.classList.remove('hidden');
+    page0302.classList.add('hidden');
+    page0303.classList.add('hidden');
+    renderizarQuizzes(resposta);
+}
+
 function salvaQuiz () {
     let objeto = {
     
@@ -418,6 +435,8 @@ function salvaQuiz () {
 
     let promessa = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",objeto);
     promessa.then(sucessoQuiz)
+    promesa.catch((err) => console.err(err))
+
 }
 function sucessoQuiz (resposta) {
     id = []
@@ -459,5 +478,4 @@ function acessarQuiz () {
     game.classList.remove("hidden")
     let pag34 = document.querySelector(".pag03-4") 
     pag34.classList.add(".hidden")
-
 }
